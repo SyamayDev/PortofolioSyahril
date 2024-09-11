@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Pribadi</title>
+    <!-- Menyertakan Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Menyertakan CSS untuk styling -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Lato:wght@300;400;700&display=swap&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+</head>
+<body id="default">
+
+    <!-- Audio yang autoplay dan loop -->
+    <audio id="background-music" autoplay loop>
+        <source src="genjer.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video Background -->
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="dashboardadminbg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#TentangSaya"><i class="fas fa-user"></i></a>
+        <a href="#Keahlian"><i class="fas fa-tools"></i></a>
+        <a href="#Portofolio"><i class="fas fa-briefcase"></i></a>
+        <a href="#Kontak"><i class="fas fa-envelope"></i></a>
+    </nav>
+
+    <!-- Section Tentang Saya -->
+    <section class="home" id="TentangSaya">
+        <div class="content">
+            <h1>Tentang Saya</h1>
+            <img src="fotoprofil.jpg" alt="Foto Profil" class="profile-photo">
+            <p>Halo, saya adalah seorang pengembang web dengan pengalaman dalam HTML, CSS, dan JavaScript. Saya bersemangat untuk menciptakan website yang menarik dan fungsional.</p>
+        </div>
+    </section>
+
+    <!-- Section Keahlian -->
+    <section class="home" id="Keahlian">
+        <div class="content">
+            <h1>Keahlian</h1>
+            <ul class="skills">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>PHP</li>
+                <li>WordPress</li>
+                <li>Python</li>
+                <li>Unity</li>
+                <li>GameWeb</li>
+                <li>GameDev</li>
+            </ul>
+        </div>
+    </section>
+
+<!-- Section Portofolio -->
+<section class="home" id="Portofolio">
+    <div class="content">
+        <h1>Portofolio</h1>
+        <p>Berikut beberapa proyek yang pernah saya kerjakan:</p>
+        <div class="portfolio-list">
+            <div class="portfolio-item">
+                <h3>Proyek 1: Game Unity</h3>
+                <video src="gametrailer.mp4" autoplay muted loop controls poster="gameposter.jpeg"></video>
+            </div>
+            <div class="portfolio-item">
+                <h3>Proyek 2: Web Desain</h3>
+                <video src="webdesain.mp4" autoplay muted loop controls poster="webposter.jpeg"></video>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Section Kontak -->
+<section class="home" id="Kontak">
+    <div class="content">
+        <h1>Kontak</h1>
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="name" placeholder="Nama" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Pesan" required></textarea>
+            <select id="platform" required>
+                <option value="">Pilih Platform</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Mencegah form submit default
+
+    // Mengambil nilai dari input dan textarea
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const platform = document.getElementById('platform').value;
+
+    let url;
+
+    // Menentukan URL berdasarkan platform yang dipilih
+    switch (platform) {
+        case 'whatsapp':
+            const phoneNumber = '6282267403010'; // Pastikan format nomor tanpa "+" dan awali dengan kode negara
+            const whatsappMessage = `Halo, saya ${name} (${email}).\n\nPesan:\n${message}`;
+            url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            break;
+        case 'instagram':
+            const instagramUsername = 'syahrilmaymubdimandai'; // Ganti dengan username Instagram Anda
+            url = `https://instagram.com/${instagramUsername}`;
+            break;
+        case 'facebook':
+            const facebookPageId = 'pahlawan.senja.146'; // Ganti dengan ID halaman Facebook Anda
+            url = `https://www.facebook.com/${facebookPageId}`;
+            break;
+        case 'tiktok':
+            const tiktokUsername = 'itsmesyahril25'; // Ganti dengan username TikTok Anda
+            url = `https://www.tiktok.com/@${tiktokUsername}`;
+            break;
+        default:
+            alert('Pilih platform pengiriman pesan.');
+            return;
+    }
+
+    // Membuka URL
+    window.open(url, '_blank');
+});
+
+</script>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 SYAHRIL.</p>
+    </footer>
+    
+</body>
+</html>
